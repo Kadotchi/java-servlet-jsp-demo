@@ -15,7 +15,25 @@ public class SampleServlet extends HttpServlet {
         // 運勢をランダムで決定
         String[] luckArray = {"超スッキリ", "スッキリ", "最悪"};
         int index = (int) (Math.random() * 3);
-        String lack = luckArray[index];
+        String luck = luckArray[index];
+
+        //　実行日を取得
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日");
+        String today = sdf.format(date);
+
+        // HTMLを出力
+        response.setContentType("text/html; charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>スッキリ占い</title>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println("<p>"+today+"の運勢は「"+ luck + "」です</p>");
+        out.println("</body>");
+        out.println("</html>");
+
     }
 
     @Override
